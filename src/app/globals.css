@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --brand-blue: #0B4DDB;
+  --brand-yellow: #FDBD12;
+  --brand-lightblue: #DCEBFF;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-lightblue: var(--brand-lightblue);
+  --font-bebas: var(--font-bebas-neue);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ─── Keyframes ─── */
+
+/* Steam rising animation – slow, dreamy */
+@keyframes steam-slow {
+  0% {
+    transform: translateY(20px) scale(0.9) rotate(-2deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.15) rotate(3deg);
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.3) rotate(-1deg);
+    opacity: 0;
+  }
+}
+
+/* Steam rising animation – faster, turbulent */
+@keyframes steam-fast {
+  0% {
+    transform: translateY(30px) scale(0.85) rotate(-5deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-5px) scale(1.1) rotate(5deg);
+    opacity: 0.25;
+  }
+  75% {
+    opacity: 0.08;
+  }
+  100% {
+    transform: translateY(-45px) scale(1.2) rotate(-5deg);
+    opacity: 0;
+  }
+}
+
+.animate-steam-slow {
+  animation: steam-slow 7s infinite ease-in-out;
+}
+
+.animate-steam-fast {
+  animation: steam-fast 5s infinite ease-in-out;
+}
+
+/* Text stroke for outlined hero text */
+.text-stroke-blue {
+  -webkit-text-stroke: 2px #0B4DDB;
+  color: transparent;
+}
