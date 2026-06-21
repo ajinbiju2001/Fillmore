@@ -183,15 +183,9 @@ export default function Hero() {
           </div>
 
           {/* Parallax Wrapper */}
-          <div ref={burgerRef} className="relative z-20 w-full h-full flex items-center justify-center will-change-transform">
+          <div ref={burgerRef} className="relative z-20 w-full h-full flex items-center justify-center">
             
-            {/* Entrance & Zero-Gravity Float Wrapper */}
-            <motion.div
-              initial={{ opacity: 0, y: 100, scale: 0.9, rotate: -2 }}
-              animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-              transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full flex items-center justify-center"
-            >
+            <div className="relative w-full flex items-center justify-center">
               <div className="relative w-full flex justify-center hover:animate-none">
                 {/* Steam Wisps - Premium Food Photography Style - Hidden on mobile */}
                 <div className="absolute inset-0 z-30 flex items-center justify-center hidden md:flex">
@@ -219,7 +213,7 @@ export default function Hero() {
                       scale: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 },
                       rotate: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 }
                     }}
-                    className="absolute inset-0 z-50 will-change-transform"
+                    className="absolute inset-0 z-50"
                   >
                     <Image 
                       src="/images/epic_black_burger_transparent.png" 
@@ -241,13 +235,13 @@ export default function Hero() {
                     
                     {/* Cinematic Lighting Overlay (Softbox reflection on top bun) */}
                     <div 
-                      className="absolute top-[10%] left-[40%] w-[40%] h-[20%] rounded-[50%] bg-white/10 blur-[20px] md:blur-[40px] mix-blend-overlay pointer-events-none"
+                      className="absolute top-[10%] left-[40%] w-[40%] h-[20%] rounded-[50%] bg-white/10 blur-[20px] md:blur-[40px] pointer-events-none"
                       style={{ transform: "rotate(-10deg)" }}
                     />
                   </motion.div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Floor shadow beneath the burger */}
