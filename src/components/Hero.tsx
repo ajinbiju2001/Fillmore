@@ -12,17 +12,9 @@ export default function Hero() {
       {/* ── Background Depth / Main Ambient Glows ── */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         {/* Fillmore Blue Top Glow - Hidden on mobile for performance */}
-        <motion.div
-          animate={{ scale: [1, 1.05, 1], opacity: [0.15, 0.2, 0.15] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden md:block absolute -top-[10%] -left-[5%] w-[40vw] h-[40vw] max-w-[600px] rounded-full bg-[#0B4DDB] blur-[150px]"
-        />
+        <div className="hidden md:block absolute -top-[10%] -left-[5%] w-[40vw] h-[40vw] max-w-[600px] rounded-full bg-[#0B4DDB] blur-[150px] opacity-20" />
         {/* Fillmore Yellow Bottom Glow - Hidden on mobile for performance */}
-        <motion.div
-          animate={{ scale: [1, 1.08, 1], opacity: [0.1, 0.15, 0.1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="hidden md:block absolute -bottom-[20%] right-[10%] w-[50vw] h-[50vw] max-w-[700px] rounded-full bg-[#FDBD12] blur-[150px]"
-        />
+        <div className="hidden md:block absolute -bottom-[20%] right-[10%] w-[50vw] h-[50vw] max-w-[700px] rounded-full bg-[#FDBD12] blur-[150px] opacity-15" />
       </div>
 
       {/* ── Main Grid ── */}
@@ -118,16 +110,8 @@ export default function Hero() {
           
           {/* Dual Radial Glow behind the burger - Hidden on mobile */}
           <div className="absolute inset-0 flex items-center justify-center hidden md:flex">
-            <motion.div
-              animate={{ scale: [1, 1.05, 1], opacity: [0.08, 0.12, 0.08] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[60%] aspect-square rounded-full bg-[#0B4DDB] blur-[80px]"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute w-[50%] aspect-square rounded-full bg-[#FDBD12] blur-[70px] translate-y-10"
-            />
+            <div className="absolute w-[60%] aspect-square rounded-full bg-[#0B4DDB] blur-[80px] opacity-10" />
+            <div className="absolute w-[50%] aspect-square rounded-full bg-[#FDBD12] blur-[70px] translate-y-10 opacity-15" />
           </div>
 
           {/* Static Wrapper (Parallax removed for performance) */}
