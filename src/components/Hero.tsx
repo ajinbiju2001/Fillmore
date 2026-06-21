@@ -212,26 +212,28 @@ export default function Hero() {
                 </div>
 
                 {/* The Physics Drop Assembly Burger */}
-                <div
-                  className="relative w-[85vw] md:w-[70vw] lg:w-[65vw] max-w-[850px] min-w-[320px] aspect-[4/5] md:aspect-square"
-                  style={{
-                    filter: "drop-shadow(0 50px 70px rgba(0,0,0,0.25)) drop-shadow(0 20px 30px rgba(0,0,0,0.18))",
-                  }}
-                >
+                <div className="relative w-[85vw] md:w-[70vw] lg:w-[65vw] max-w-[850px] min-w-[320px] aspect-[4/5] md:aspect-square">
                   {/* --- PREMIUM EPIC BURGER DROP --- */}
                   <motion.div
-                    initial={{ opacity: 0, y: -800, scale: 1.4, rotate: -5, filter: "brightness(2) blur(10px)" }}
-                    animate={{ opacity: 1, y: 0, scale: 1, rotate: 0, filter: "brightness(1) blur(0px)" }}
+                    initial={{ opacity: 0, y: -800, scale: 1.4, rotate: -5 }}
+                    animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
                     transition={{ 
                       y: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 },
                       opacity: { duration: 0.8, delay: 0.2 },
                       scale: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 },
-                      rotate: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 },
-                      filter: { duration: 1.5, ease: "easeOut", delay: 0.2 }
+                      rotate: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 }
                     }}
-                    className="absolute inset-0 z-50"
+                    className="absolute inset-0 z-50 will-change-transform"
                   >
-                    <Image src="/images/epic_black_burger_transparent.png" alt="The Ultimate Fillmore Burger" fill priority className="object-contain drop-shadow-[0_50px_80px_rgba(0,0,0,0.6)]" sizes="(max-width: 768px) 95vw, 65vw" />
+                    <Image 
+                      src="/images/epic_black_burger_transparent.png" 
+                      alt="The Ultimate Fillmore Burger" 
+                      fill 
+                      priority 
+                      unoptimized={true}
+                      className="object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]" 
+                      sizes="(max-width: 768px) 95vw, 65vw" 
+                    />
                     
                     {/* Epic Impact Shockwave (Rings that expand out when the burger lands) */}
                     <motion.div 
