@@ -151,31 +151,16 @@ export default function Hero() {
                   />
                 </div>
 
-                {/* The Burger */}
-                <div className="relative w-[85vw] md:w-[70vw] lg:w-[65vw] max-w-[850px] min-w-[320px] aspect-[4/5] md:aspect-square">
-                  {/* --- SIMPLE ELEGANT ENTRANCE --- */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0 z-50"
-                  >
-                    <Image 
-                      src="/images/epic_black_burger_transparent.png" 
-                      alt="The Ultimate Fillmore Burger" 
-                      fill 
-                      priority 
-                      unoptimized={true}
-                      className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]" 
-                      sizes="(max-width: 768px) 95vw, 65vw" 
-                    />
-                    
-                    {/* Cinematic Lighting Overlay (Softbox reflection on top bun) */}
-                    <div 
-                      className="absolute top-[10%] left-[40%] w-[40%] h-[20%] rounded-[50%] bg-white/10 blur-[20px] md:blur-[40px] pointer-events-none"
-                      style={{ transform: "rotate(-10deg)" }}
-                    />
-                  </motion.div>
+                {/* The Burger - Raw Static Native Image for 100% Stability */}
+                <div className="relative w-[85vw] md:w-[70vw] lg:w-[65vw] max-w-[850px] min-w-[320px] aspect-[4/5] md:aspect-square z-50">
+                  <img 
+                    src="/images/epic_black_burger_transparent.png" 
+                    alt="The Ultimate Fillmore Burger" 
+                    fetchpriority="high"
+                    decoding="sync"
+                    loading="eager"
+                    className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]"
+                  />
                 </div>
               </div>
             </div>
