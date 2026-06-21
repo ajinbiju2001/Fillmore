@@ -6,58 +6,8 @@ import { ArrowRight, Flame, Star, Users, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const burgerRef = useRef<HTMLDivElement>(null);
-
-  /* ── Mouse parallax ── */
-  useEffect(() => {
-    // Disable parallax on mobile to save battery and boost performance
-    if (window.innerWidth < 768) return;
-
-    const section = sectionRef.current;
-    const burger = burgerRef.current;
-    if (!section || !burger) return;
-
-    let rafId: number;
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    const handleMouse = (e: MouseEvent) => {
-      const rect = section.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      targetX = x * 10;  // max 10px
-      targetY = y * 10;
-    };
-
-    const handleLeave = () => {
-      targetX = 0;
-      targetY = 0;
-    };
-
-    const animate = () => {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-      burger.style.transform = `translate(${currentX}px, ${currentY}px)`;
-      rafId = requestAnimationFrame(animate);
-    };
-
-    section.addEventListener("mousemove", handleMouse);
-    section.addEventListener("mouseleave", handleLeave);
-    rafId = requestAnimationFrame(animate);
-
-    return () => {
-      section.removeEventListener("mousemove", handleMouse);
-      section.removeEventListener("mouseleave", handleLeave);
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="home"
       className="relative min-h-[100vh] lg:h-screen w-full overflow-hidden bg-white font-sans pt-32 pb-16 lg:pt-0 lg:pb-0"
     >
@@ -182,8 +132,8 @@ export default function Hero() {
             />
           </div>
 
-          {/* Parallax Wrapper */}
-          <div ref={burgerRef} className="relative z-20 w-full h-full flex items-center justify-center">
+          {/* Static Wrapper (Parallax removed for performance) */}
+          <div className="relative z-20 w-full h-full flex items-center justify-center">
             
             <div className="relative w-full flex items-center justify-center">
               <div className="relative w-full flex justify-center hover:animate-none">
@@ -201,18 +151,13 @@ export default function Hero() {
                   />
                 </div>
 
-                {/* The Physics Drop Assembly Burger */}
+                {/* The Burger */}
                 <div className="relative w-[85vw] md:w-[70vw] lg:w-[65vw] max-w-[850px] min-w-[320px] aspect-[4/5] md:aspect-square">
-                  {/* --- PREMIUM EPIC BURGER DROP --- */}
+                  {/* --- SIMPLE ELEGANT ENTRANCE --- */}
                   <motion.div
-                    initial={{ opacity: 0, y: -800, scale: 1.4, rotate: -5 }}
-                    animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-                    transition={{ 
-                      y: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 },
-                      opacity: { duration: 0.8, delay: 0.2 },
-                      scale: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 },
-                      rotate: { type: "spring", stiffness: 35, damping: 15, mass: 3, delay: 0.2 }
-                    }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 z-50"
                   >
                     <Image 
@@ -223,14 +168,6 @@ export default function Hero() {
                       unoptimized={true}
                       className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]" 
                       sizes="(max-width: 768px) 95vw, 65vw" 
-                    />
-                    
-                    {/* Epic Impact Shockwave (Rings that expand out when the burger lands) */}
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: [0, 0.4, 0], scale: [0.5, 1.3, 1.8] }}
-                      transition={{ duration: 2.0, ease: "easeOut", delay: 1.0 }}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-brand-yellow/30 md:border-2 pointer-events-none"
                     />
                     
                     {/* Cinematic Lighting Overlay (Softbox reflection on top bun) */}
