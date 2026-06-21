@@ -11,6 +11,9 @@ export default function Hero() {
 
   /* ── Mouse parallax ── */
   useEffect(() => {
+    // Disable parallax on mobile to save battery and boost performance
+    if (window.innerWidth < 768) return;
+
     const section = sectionRef.current;
     const burger = burgerRef.current;
     if (!section || !burger) return;
@@ -60,17 +63,17 @@ export default function Hero() {
     >
       {/* ── Background Depth / Main Ambient Glows ── */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        {/* Fillmore Blue Top Glow */}
+        {/* Fillmore Blue Top Glow - Hidden on mobile for performance */}
         <motion.div
           animate={{ scale: [1, 1.05, 1], opacity: [0.15, 0.2, 0.15] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[10%] -left-[5%] w-[40vw] h-[40vw] max-w-[600px] rounded-full bg-[#0B4DDB] blur-[150px]"
+          className="hidden md:block absolute -top-[10%] -left-[5%] w-[40vw] h-[40vw] max-w-[600px] rounded-full bg-[#0B4DDB] blur-[150px]"
         />
-        {/* Fillmore Yellow Bottom Glow */}
+        {/* Fillmore Yellow Bottom Glow - Hidden on mobile for performance */}
         <motion.div
           animate={{ scale: [1, 1.08, 1], opacity: [0.1, 0.15, 0.1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-[20%] right-[10%] w-[50vw] h-[50vw] max-w-[700px] rounded-full bg-[#FDBD12] blur-[150px]"
+          className="hidden md:block absolute -bottom-[20%] right-[10%] w-[50vw] h-[50vw] max-w-[700px] rounded-full bg-[#FDBD12] blur-[150px]"
         />
       </div>
 
@@ -165,8 +168,8 @@ export default function Hero() {
         {/* ── Right: Burger Composition ── */}
         <div className="relative flex items-center justify-center h-full w-full lg:-ml-8 xl:-ml-12 mt-12 lg:mt-0 pointer-events-none">
           
-          {/* Dual Radial Glow behind the burger */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          {/* Dual Radial Glow behind the burger - Hidden on mobile */}
+          <div className="absolute inset-0 flex items-center justify-center hidden md:flex">
             <motion.div
               animate={{ scale: [1, 1.05, 1], opacity: [0.08, 0.12, 0.08] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -189,16 +192,9 @@ export default function Hero() {
               transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-full flex items-center justify-center"
             >
-              <motion.div
-                animate={{ 
-                  y: [-6, 6, -6],
-                  rotate: [-0.5, 0.5, -0.5] // Subtle rotational breathing
-                }}
-                transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
-                className="relative w-full flex justify-center"
-              >
-                {/* Steam Wisps - Premium Food Photography Style */}
-                <div className="absolute inset-0 z-30 flex items-center justify-center">
+              <div className="relative w-full flex justify-center hover:animate-none">
+                {/* Steam Wisps - Premium Food Photography Style - Hidden on mobile */}
+                <div className="absolute inset-0 z-30 flex items-center justify-center hidden md:flex">
                   <motion.div
                     animate={{ y: [0, -40, -80], x: [0, 5, -3], opacity: [0, 0.08, 0], scale: [0.9, 1.2, 1.5] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeOut", delay: 0 }}
@@ -231,7 +227,7 @@ export default function Hero() {
                       fill 
                       priority 
                       unoptimized={true}
-                      className="object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]" 
+                      className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]" 
                       sizes="(max-width: 768px) 95vw, 65vw" 
                     />
                     
@@ -240,17 +236,17 @@ export default function Hero() {
                       initial={{ opacity: 0, scale: 0.5 }}
                       animate={{ opacity: [0, 0.4, 0], scale: [0.5, 1.3, 1.8] }}
                       transition={{ duration: 2.0, ease: "easeOut", delay: 1.0 }}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border-2 border-brand-yellow/30 pointer-events-none"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-brand-yellow/30 md:border-2 pointer-events-none"
                     />
                     
                     {/* Cinematic Lighting Overlay (Softbox reflection on top bun) */}
                     <div 
-                      className="absolute top-[10%] left-[40%] w-[40%] h-[20%] rounded-[50%] bg-white/10 blur-[40px] mix-blend-overlay pointer-events-none"
+                      className="absolute top-[10%] left-[40%] w-[40%] h-[20%] rounded-[50%] bg-white/10 blur-[20px] md:blur-[40px] mix-blend-overlay pointer-events-none"
                       style={{ transform: "rotate(-10deg)" }}
                     />
                   </motion.div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
 
@@ -266,7 +262,7 @@ export default function Hero() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute bottom-[5%] lg:bottom-[8%] w-[55%] h-[30px] rounded-[50%] bg-black/30 blur-[20px] pointer-events-none z-10"
+            className="absolute bottom-[5%] lg:bottom-[8%] w-[55%] h-[20px] md:h-[30px] rounded-[50%] bg-black/30 blur-[15px] md:blur-[20px] pointer-events-none z-10"
           />
         </div>
       </div>

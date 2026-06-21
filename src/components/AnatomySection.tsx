@@ -114,8 +114,8 @@ export default function AnatomySection() {
       ref={sectionRef}
       className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center font-sans"
     >
-      {/* Background Ambience */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+      {/* Background Ambience - Hidden on mobile for performance */}
+      <div className="absolute inset-0 pointer-events-none hidden md:flex items-center justify-center">
         <div className="w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] rounded-full bg-[#FDBD12]/5 blur-[120px]" />
       </div>
 
@@ -125,13 +125,14 @@ export default function AnatomySection() {
         className="relative w-full max-w-[1200px] h-full max-h-[900px] flex items-center justify-center"
       >
         {/* Burger Image Container (Aspect Square) */}
-        <div ref={burgerRef} className="relative w-[90vw] md:w-[60vw] max-w-[600px] aspect-square z-10">
+        <div ref={burgerRef} className="relative w-[90vw] md:w-[60vw] max-w-[600px] aspect-square z-10 will-change-transform">
           <Image
             src="/images/hero_burger_perfect_nofork.png"
             alt="The Fillmore Burger"
             fill
             priority
-            className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            unoptimized={true}
+            className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)] md:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
             sizes="(max-width: 768px) 90vw, 600px"
           />
 
