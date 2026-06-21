@@ -135,19 +135,6 @@ export default function Hero() {
             
             <div className="relative w-full flex items-center justify-center">
               <div className="relative w-full flex justify-center hover:animate-none">
-                {/* Steam Wisps - Premium Food Photography Style - Hidden on mobile */}
-                <div className="absolute inset-0 z-30 flex items-center justify-center hidden md:flex">
-                  <motion.div
-                    animate={{ y: [0, -40, -80], x: [0, 5, -3], opacity: [0, 0.08, 0], scale: [0.9, 1.2, 1.5] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeOut", delay: 0 }}
-                    className="absolute top-[15%] left-[45%] w-[80px] h-[100px] rounded-full bg-white blur-[25px]"
-                  />
-                  <motion.div
-                    animate={{ y: [0, -30, -60], x: [0, -8, 4], opacity: [0, 0.06, 0], scale: [0.8, 1.1, 1.3] }}
-                    transition={{ duration: 7, repeat: Infinity, ease: "easeOut", delay: 2 }}
-                    className="absolute top-[18%] left-[52%] w-[60px] h-[80px] rounded-full bg-white blur-[20px]"
-                  />
-                </div>
 
                 {/* The Burger - Raw Static Native Image for 100% Stability */}
                 <div className="relative w-[85vw] md:w-[70vw] lg:w-[65vw] max-w-[850px] min-w-[320px] aspect-[4/5] md:aspect-square z-50">
@@ -157,27 +144,15 @@ export default function Hero() {
                     fetchPriority="high"
                     decoding="sync"
                     loading="eager"
-                    className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Floor shadow beneath the burger */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{
-              opacity: [0.15, 0.25, 0.15],
-              scale: [0.85, 1.05, 0.85],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute bottom-[5%] lg:bottom-[8%] w-[55%] h-[20px] md:h-[30px] rounded-[50%] bg-black/30 blur-[15px] md:blur-[20px] pointer-events-none z-10"
-          />
+          {/* Static Floor shadow beneath the burger */}
+          <div className="absolute bottom-[5%] lg:bottom-[8%] w-[55%] h-[20px] md:h-[30px] rounded-[50%] bg-black/40 blur-[15px] md:blur-[25px] pointer-events-none z-10" />
         </div>
       </div>
     </section>
