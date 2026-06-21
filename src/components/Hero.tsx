@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { ArrowRight, Flame, Star, Users, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -156,7 +154,7 @@ export default function Hero() {
                   <img 
                     src="/images/epic_black_burger_transparent.png" 
                     alt="The Ultimate Fillmore Burger" 
-                    fetchpriority="high"
+                    fetchPriority="high"
                     decoding="sync"
                     loading="eager"
                     className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)]"
